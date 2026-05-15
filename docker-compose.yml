@@ -1,0 +1,16 @@
+services:
+  tutorial:
+    build: .
+    image: haskell-complete-tutorial:local
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+      - cabal-store:/root/.local/state/cabal
+      - cabal-cache:/root/.cache/cabal
+    command: /bin/bash
+    tty: true
+    stdin_open: true
+
+volumes:
+  cabal-store:
+  cabal-cache:

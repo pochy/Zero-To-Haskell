@@ -1,0 +1,8 @@
+dist-newstyle/
+.stack-work/
+.hie/
+*.hi
+*.o
+.DS_Store
+tmp/
+result
