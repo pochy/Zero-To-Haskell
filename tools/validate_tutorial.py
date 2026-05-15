@@ -85,6 +85,30 @@ def check_examples_have_main() -> None:
         fail("examples missing main :: IO ():\n" + "\n".join(missing_main[:20]))
 
 
+def check_philosophy_sections() -> None:
+    required_readme_sections = [
+        "## 背景と設計思想",
+        "## なぜそうすべきなのか",
+        "## 他言語的な発想との違い",
+    ]
+    required_solution_sections = [
+        "## なぜこの設計判断を選ぶのか",
+    ]
+    missing: list[str] = []
+    for path in CHAPTERS.glob("part_*/chapter_*/README.md"):
+        text = path.read_text(encoding="utf-8")
+        for section in required_readme_sections:
+            if section not in text:
+                missing.append(f"{path.relative_to(ROOT)} missing {section}")
+    for path in CHAPTERS.glob("part_*/chapter_*/solutions.md"):
+        text = path.read_text(encoding="utf-8")
+        for section in required_solution_sections:
+            if section not in text:
+                missing.append(f"{path.relative_to(ROOT)} missing {section}")
+    if missing:
+        fail("philosophy sections missing:\n" + "\n".join(missing[:20]))
+
+
 def check_root_learning_assets() -> None:
     required = [
         ROOT / "CHECKPOINTS.md",
@@ -108,6 +132,7 @@ def main() -> None:
     check_links()
     check_repeated_template_text()
     check_examples_have_main()
+    check_philosophy_sections()
     check_root_learning_assets()
     print("tutorial validation passed")
 
