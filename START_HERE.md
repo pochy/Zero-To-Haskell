@@ -2,12 +2,31 @@
 
 ## 今日やること
 
-1. Haskellの環境を作る。
+1. DockerまたはGHCupでHaskellを実行できる状態にする。
 2. 第0章で思想を読む。
 3. 第1章の `Hello, World!` を実行する。
 4. 第2章でGHCiの `:t` を使い、型を見る習慣を作る。
 
-## 環境構築
+## Dockerで始める
+
+ローカル環境を汚したくない場合はDockerで進めます。
+
+```bash
+docker-compose build tutorial
+docker-compose run --rm tutorial cabal build all
+docker-compose run --rm tutorial runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
+docker-compose run --rm tutorial ghci
+```
+
+コンテナ内で章を進める場合:
+
+```bash
+docker-compose run --rm tutorial bash
+cd chapters/part_01_hello_world/chapter_01_hello_world
+runghc examples/Main.hs
+```
+
+## GHCupで始める
 
 公式にはGHCupを使う方法が推奨されています。
 

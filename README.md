@@ -8,6 +8,19 @@
 
 この教材は、APIや構文の暗記ではなく、**型で世界を設計し、純粋関数で意味を記述し、副作用を型で隔離し、小さな計算を合成して大きなプログラムを作る** 力を育てます。
 
+Haskellを支える中心思想は次の問いです。
+
+```text
+なぜ純粋であるべきなのか
+なぜ型で設計するのか
+なぜ副作用を分けるのか
+なぜ遅延評価なのか
+なぜモナドや型クラスが重要なのか
+なぜHaskellらしいコードは他言語と考え方が違うのか
+```
+
+Haskell公式サイトと Haskell 2010 Report は、Haskellを純粋関数型、非正格意味論、静的多相型、代数的データ型、型クラス、モナド的I/Oなどを備える言語として位置づけています。この教材もその特徴を、Hello Worldから実務設計まで一貫して扱います。
+
 ## 構成
 
 | 部 | テーマ | 章数 |
@@ -36,13 +49,14 @@
 | 第21部 | Haskellの歴史と哲学 | 2章 |
 | 第22部 | プロフェッショナルへの総合演習 | 3章 |
 
-## 最初のコマンド
+## Dockerで始める
 
 ```bash
-ghcup tui
-cabal update
-cabal build all
-runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
+docker-compose build tutorial
+docker-compose run --rm tutorial cabal build all
+docker-compose run --rm tutorial runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
 ```
 
-この作業環境ではGHC/Cabalが未導入だったため、コード例の実コンパイルは未実施です。教材内の手順はGHCupでGHCとcabal-installを入れた環境を前提にしています。
+ローカルのGHC/Cabalを入れずに進められます。Docker内のGHC 9.10.3で、`cabal build all` と全章の `examples/Main.hs` を実行確認する方針です。
+
+GHCupを使う場合は `START_HERE.md` の環境構築手順を参照してください。
