@@ -810,6 +810,29 @@ for n, part, title, focus, terms in EXTRA_TITLES:
 
 def slug(value: str) -> str:
     table = {
+        "Haskellを学ぶ前に": "foundations",
+        "Hello, World! から始める": "hello_world",
+        "値・式・関数": "values_expressions_functions",
+        "型で考える": "thinking_with_types",
+        "代数的データ型とパターンマッチ": "adt_pattern_matching",
+        "再帰・リスト・fold": "recursion_lists_fold",
+        "遅延評価と非正格意味論": "lazy_evaluation",
+        "型クラス": "typeclasses",
+        "Functor / Applicative / Monad": "functor_applicative_monad",
+        "Effect と IO の設計": "effects_io_design",
+        "エラー設計": "error_design",
+        "モジュール・プロジェクト・ツール": "modules_projects_tools",
+        "テストと仕様": "testing_specification",
+        "パーサー・DSL・関数型設計": "parsers_dsl_design",
+        "Lens とデータアクセス": "lens_data_access",
+        "並行・並列・STM": "concurrency_parallelism_stm",
+        "性能・最適化・GHC": "performance_ghc",
+        "高度な型システム": "advanced_types",
+        "実務アプリケーション設計": "application_design",
+        "FFI・JS・WASM・Nix": "ffi_js_wasm_nix",
+        "Haskell周辺言語との比較": "language_comparisons",
+        "Haskellの歴史と哲学": "history_philosophy",
+        "プロフェッショナルへの総合演習": "professional_projects",
         "Haskellとは何か": "what_is_haskell",
         "Hello, World! の本当の意味": "hello_world",
         "GHCiで「型を見る」習慣を作る": "ghci_types",
@@ -820,6 +843,67 @@ def slug(value: str) -> str:
         "関数合成とポイントフリースタイル": "composition",
         "型注釈と型推論": "types",
         "多相性": "polymorphism",
+        "型エイリアスと newtype": "newtype",
+        "代数的データ型": "algebraic_data_types",
+        "パターンマッチ": "pattern_matching",
+        "Maybe": "maybe",
+        "Either": "either",
+        "ループではなく再帰": "recursion",
+        "map / filter / fold": "map_filter_fold",
+        "リスト内包表記": "list_comprehension",
+        "遅延評価とは何か": "lazy_evaluation",
+        "遅延評価は万能ではない": "strictness",
+        "型クラスとは何か": "typeclasses",
+        "型クラスの法則": "typeclass_laws",
+        "標準的な型クラス": "standard_typeclasses",
+        "Functor": "functor",
+        "Applicative": "applicative",
+        "Monad": "monad",
+        "do記法": "do_notation",
+        "副作用とは何か": "effects",
+        "Pure Core / Effectful Shell": "pure_core_effectful_shell",
+        "Reader / State / Writer": "reader_state_writer",
+        "モナド変換子": "monad_transformers",
+        "partial function を避ける": "partial_functions",
+        "エラーを型で設計する": "typed_errors",
+        "モジュールシステム": "module_system",
+        "Cabal / Stack / Hackage": "cabal_stack_hackage",
+        "Haskell Language Server": "haskell_language_server",
+        "例ベースのテスト": "example_based_tests",
+        "プロパティベーステスト": "property_based_tests",
+        "パーサーコンビネータ": "parser_combinators",
+        "DSL設計": "dsl_design",
+        "Lensとは何か": "lens",
+        "軽量スレッドと async": "async",
+        "STM": "stm",
+        "GHCの基礎": "ghc_basics",
+        "プロファイリング": "profiling",
+        "正格性制御": "strictness_control",
+        "kind と高階型": "kinds_higher_kinded_types",
+        "GADT": "gadt",
+        "Phantom Types": "phantom_types",
+        "DataKinds / TypeFamilies / Type-level programming": "type_level_programming",
+        "RankNTypes / Existential Types": "rankn_existentials",
+        "Deriving と Generics": "deriving_generics",
+        "CLIアプリを作る": "cli_app",
+        "Web APIを作る": "web_api",
+        "DBを扱う": "database",
+        "JSONと外部API": "json_external_api",
+        "FFI": "ffi",
+        "JavaScript / WebAssembly backend": "javascript_webassembly",
+        "Nixと再現可能ビルド": "nix_reproducible_builds",
+        "PureScript": "purescript",
+        "Elm": "elm",
+        "Clean": "clean",
+        "OCaml / F# / Scala": "ocaml_fsharp_scala",
+        "Idris / Agda / Lean / F*": "idris_agda_lean_fstar",
+        "Roc / Unison / Gleam": "roc_unison_gleam",
+        "TypeScript + Effect / fp-ts": "typescript_effect_fpts",
+        "なぜHaskellは生まれたのか": "history_of_haskell",
+        "Haskellの哲学": "haskell_philosophy",
+        "小規模演習": "small_project",
+        "中規模演習": "medium_project",
+        "大規模演習": "large_project",
     }
     if value in table:
         return table[value]
@@ -848,6 +932,68 @@ def official_link(ch: Chapter) -> str:
     if ch.number in {56, 57}:
         return "- Haskell 2010 Report: https://www.haskell.org/definition/haskell2010.pdf\n- GHC User's Guide: https://ghc.gitlab.haskell.org/ghc/doc/users_guide/"
     return "- Haskell 2010 Report: https://www.haskell.org/definition/haskell2010.pdf\n- GHC User's Guide: https://ghc.gitlab.haskell.org/ghc/doc/users_guide/"
+
+
+def extra_guidance(ch: Chapter) -> str:
+    if ch.number == 0:
+        return """
+## この章だけの読み方
+
+この章では、まだ多くの構文を覚えなくて構いません。注目するのは次の分離です。
+
+```text
+double :: Int -> Int
+main   :: IO ()
+```
+
+`double` は純粋な関数です。同じ `21` を渡せば、常に `42` を返します。一方で `main` は外界に結果を表示する計算です。Haskellの設計では、まずこの二つを混ぜない感覚を作ります。
+
+Dockerで進めている場合は、リポジトリルートから次を実行できます。
+
+```bash
+docker-compose run --rm tutorial runghc chapters/part_00_foundations/chapter_00_what_is_haskell/examples/Main.hs
+```
+"""
+    if ch.number == 1:
+        return """
+## `IO ()` をどう読むか
+
+`main = putStrLn "Hello, World!"` は「文字列を出力せよ」という命令文ではなく、`IO ()` という型の値を `main` という名前に束縛しています。
+
+```text
+putStrLn "Hello, World!" :: IO ()
+```
+
+`()` は意味のある値を返さないことを表します。重要なのは、Haskellが「外界に触る計算」を `IO` として型に出している点です。これにより、純粋な関数と副作用のある計算をレビュー時にも区別できます。
+
+Dockerで進めている場合:
+
+```bash
+docker-compose run --rm tutorial runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
+```
+"""
+    if ch.number == 2:
+        return """
+## GHCiで実際に型を見る
+
+対話環境に入るには次を実行します。
+
+```bash
+docker-compose run --rm tutorial ghci
+```
+
+GHCiが起動したら、次を入力します。
+
+```text
+:t map
+:t filter
+:t putStrLn
+:info Maybe
+```
+
+見るべき点は、関数名ではなく矢印 `->` の並びです。`map :: (a -> b) -> [a] -> [b]` は「`a` を `b` に変える関数」と「`a` のリスト」を受け取り、「`b` のリスト」を返す、と読めます。
+"""
+    return ""
 
 
 def readme(ch: Chapter) -> str:
@@ -896,6 +1042,8 @@ runghc examples/Main.hs
 ```
 
 出力だけでなく、どの部分が純粋な計算で、どの部分が外界に触れる計算なのかを分けて見ます。`main` の外へ純粋な関数を切り出せるほど、テストしやすく、型で読みやすいコードになります。
+
+{extra_guidance(ch)}
 
 ## 設計として考える
 

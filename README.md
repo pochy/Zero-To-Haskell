@@ -45,4 +45,4 @@ cabal build all
 runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
 ```
 
-この作業環境ではローカルのGHC/Cabalは未導入ですが、Docker内のGHC 9.10.3では `cabal build all` と全章の `examples/Main.hs` を実行確認済みです。
+この作業環境ではGHC/Cabalが未導入だったため、コード例の実コンパイルは未実施です。教材内の手順はGHCupでGHCとcabal-installを入れた環境を前提にしています。
