@@ -46,9 +46,14 @@ README.md を読む
 examples/Main.hs を読む
 runghc examples/Main.hs で動かす
 exercises.md を解く
+solutions.md で設計観点を確認する
 進級チェックに答える
 公式docsを確認する
 ```
+
+## 到達チェック
+
+詳しい進級条件は [CHECKPOINTS.md](CHECKPOINTS.md) を使います。第0部から第5部までは基礎語彙、第6部から第12部までは型と仕様、第13部以降は実務設計と運用判断を確認します。
 
 ## 学習時間の目安
 

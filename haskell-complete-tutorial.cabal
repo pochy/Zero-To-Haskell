@@ -9,9 +9,17 @@ common warnings
 
 library
   import: warnings
-  exposed-modules: Tutorial.Core
+  exposed-modules:
+    Tutorial.Capstone
+    Tutorial.Core
   hs-source-dirs: src
   build-depends: base >=4.18 && <5
+
+executable capstone
+  import: warnings
+  main-is: Main.hs
+  hs-source-dirs: app
+  build-depends: base >=4.18 && <5, haskell-complete-tutorial
 
 test-suite tutorial-tests
   import: warnings

@@ -49,12 +49,20 @@ Haskell公式サイトと Haskell 2010 Report は、Haskellを純粋関数型、
 | 第21部 | Haskellの歴史と哲学 | 2章 |
 | 第22部 | プロフェッショナルへの総合演習 | 3章 |
 
+## 10/10教材としての使い方
+
+- [CHECKPOINTS.md](CHECKPOINTS.md) で到達段階ごとの進級条件を確認します。
+- [glossary.md](glossary.md) で用語をコード例、誤解、関連章と一緒に確認します。
+- 各章の `solutions.md` は、答え合わせではなく設計レビューの観点として使います。
+- [projects/capstone](projects/capstone) で、型安全な小規模アプリを設計、実装、テストします。
+
 ## Dockerで始める
 
 ```bash
 docker-compose build tutorial
 docker-compose run --rm tutorial cabal build all
 docker-compose run --rm tutorial runghc chapters/part_01_hello_world/chapter_01_hello_world/examples/Main.hs
+docker-compose run --rm tutorial cabal test all
 ```
 
 ローカルのGHC/Cabalを入れずに進められます。Docker内のGHC 9.10.3で、`cabal build all` と全章の `examples/Main.hs` を実行確認する方針です。
