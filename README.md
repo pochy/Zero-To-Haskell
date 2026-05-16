@@ -57,6 +57,7 @@ Haskell公式サイトと Haskell 2010 Report は、Haskellを純粋関数型、
 - [glossary.md](glossary.md) で用語をコード例、誤解、関連章と一緒に確認します。
 - 各章の `solutions.md` は、答え合わせではなく設計レビューの観点として使います。
 - [projects/capstone](projects/capstone) で、型安全な小規模アプリを設計、実装、テストします。
+- [ADVANCED_PROJECTS.md](ADVANCED_PROJECTS.md) で、チュートリアル完了後に作るツールやアプリの候補を選びます。
 
 ## Dockerで始める
 

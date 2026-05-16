@@ -37,7 +37,7 @@ def check_counts() -> None:
 
 def check_links() -> None:
     missing: list[tuple[str, str]] = []
-    markdown_files = [ROOT / "README.md", ROOT / "START_HERE.md", ROOT / "TUTORIAL.md", ROOT / "glossary.md", ROOT / "CHECKPOINTS.md"]
+    markdown_files = [ROOT / "README.md", ROOT / "START_HERE.md", ROOT / "TUTORIAL.md", ROOT / "glossary.md", ROOT / "CHECKPOINTS.md", ROOT / "ADVANCED_PROJECTS.md"]
     markdown_files.extend((ROOT / "projects").rglob("*.md"))
     markdown_files.extend(CHAPTERS.rglob("*.md"))
     for path in markdown_files:
@@ -112,6 +112,7 @@ def check_philosophy_sections() -> None:
 def check_root_learning_assets() -> None:
     required = [
         ROOT / "CHECKPOINTS.md",
+        ROOT / "ADVANCED_PROJECTS.md",
         ROOT / "glossary.md",
         ROOT / "projects" / "capstone" / "README.md",
         ROOT / "src" / "Tutorial" / "Capstone.hs",
